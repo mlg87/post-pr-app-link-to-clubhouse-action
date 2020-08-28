@@ -1,0 +1,9 @@
+{
+  "name": "post-pr-app-link-to-clubhouse-action",
+  "version": "0.0.1",
+  "description": "This action will post a link to a deployed PR app on a corresponding Clubhouse ticket.",
+  "main": "index.js",
+  "repository": "https://github.com/mlg87/post-pr-app-link-to-clubhouse-action",
+  "author": "mlg87",
+  "license": "MIT"
+}
