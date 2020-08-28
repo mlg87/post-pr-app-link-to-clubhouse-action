@@ -16,7 +16,7 @@ const getStoryIdFromBranch = (ref) => {
 
 (async () => {
   try {
-    const { pull_request } = github.context.payload;
+    const { pull_request, repository } = github.context.payload;
     const appBaseUrl = core.getInput("app-base-url");
     const clubhouseToken = core.getInput("clubhouse-token");
     const linkText = core.getInput("link-text");
@@ -24,9 +24,7 @@ const getStoryIdFromBranch = (ref) => {
       console.log("No pull_request info in payload, exiting");
       return null;
     }
-    const prNumber = pull_request.number;
-    const repoName = pull_request.repo.name;
-    const appUrl = `${appBaseUrl}/pr-${prNumber}-${repoName}`;
+    const appUrl = `${appBaseUrl}/pr-${pull_request.number}-${repository.name}`;
     const storyId = getStoryIdFromBranch(pull_request.head.ref);
     const url = `https://api.clubhouse.io/api/v3/stories/${storyId}/comments?token=${clubhouseToken}`;
     const body = {
