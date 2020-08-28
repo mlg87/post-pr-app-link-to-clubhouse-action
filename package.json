@@ -5,5 +5,10 @@
   "main": "index.js",
   "repository": "https://github.com/mlg87/post-pr-app-link-to-clubhouse-action",
   "author": "mlg87",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.5",
+    "@actions/github": "^4.0.0",
+    "node-fetch": "^2.6.0"
+  }
 }
