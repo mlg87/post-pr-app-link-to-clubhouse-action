@@ -18,7 +18,7 @@ const getStoryIdFromBranch = (ref) => {
   try {
     const { pull_request, repository } = github.context.payload;
     const appBaseUrl = core.getInput("app-base-url");
-    const clubhouseToken = core.getInput("clubhouse-token");
+    const shortcutToken = core.getInput("shortcut-token");
     const linkText = core.getInput("link-text");
     if (!pull_request) {
       console.log("No pull_request info in payload, exiting");
@@ -26,12 +26,13 @@ const getStoryIdFromBranch = (ref) => {
     }
     const appUrl = `${appBaseUrl}/pr-${pull_request.number}-${repository.name}`;
     const storyId = getStoryIdFromBranch(pull_request.head.ref);
-    const url = `https://api.clubhouse.io/api/v3/stories/${storyId}/comments?token=${clubhouseToken}`;
+    const url = `https://api.app.shortcut.com/api/v3/stories/${storyId}/comments`;
     const body = {
       text: `[${linkText}](${appUrl})`,
     };
     const headers = {
       "Content-Type": "application/json",
+      "Shortcut-Token": shortcutToken,
     };
     const res = await fetch(url, {
       method: "POST",
@@ -40,10 +41,10 @@ const getStoryIdFromBranch = (ref) => {
     });
     if (res.ok) {
       console.log(
-        `Successfully posted PR app link to Clubhouse story: ${storyId}`
+        `Successfully posted PR app link to Shortcut story: ${storyId}`
       );
     } else {
-      console.log("Was not able to post PR app link to Clubhouse story");
+      console.log("Was not able to post PR app link to Shortcut story");
     }
   } catch (error) {
     core.setFailed(error.message);
