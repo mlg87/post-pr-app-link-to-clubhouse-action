@@ -1,14 +1,14 @@
-name: "Post PR App Link to Clubhouse Action"
-description: "This action will post a link to a deployed PR app on a corresponding Clubhouse ticket (retrieved from branch name)"
+name: "Post PR App Link to Shortcut Action"
+description: "This action will post a link to a deployed PR app on a corresponding Shortcut ticket (retrieved from branch name)"
 inputs:
   app-base-url:
     description: "Base URL to use to build PR URL. e.g. mysubdomain.mydomain.com and PRs would be mysubdomain.mydomain.com/pr-app-name"
     required: true
-  clubhouse-token:
-    description: "OAuth token that allows us to interact with Clubhouse"
+  shortcut-token:
+    description: "OAuth token that allows us to interact with Shortcut"
     required: true
   link-text:
-    description: "What you want the comment posted on the the Clubhouse ticket to say"
+    description: "What you want the comment posted on the the Shortcut ticket to say"
     default: "Here is a link to the live PR app"
     required: false
 runs:
