@@ -44,6 +44,7 @@ const getStoryIdFromBranch = (ref) => {
         `Successfully posted PR app link to Shortcut story: ${storyId}`
       );
     } else {
+      console.log("res", { ...res });
       console.log("Was not able to post PR app link to Shortcut story");
     }
   } catch (error) {
