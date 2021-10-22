@@ -5,9 +5,9 @@ const core = require("@actions/core");
 const getStoryIdFromBranch = (ref) => {
   let id = null;
   if (ref) {
-    const chPatternMatch = ref.match(/ch[0-9]{5,}/);
-    if (chPatternMatch) {
-      const idMatch = chPatternMatch[0].match(/[0-9]{5,}/);
+    const scPatternMatch = ref.match(/sc-[0-9]{5,}/);
+    if (scPatternMatch) {
+      const idMatch = scPatternMatch[0].match(/[0-9]{5,}/);
       id = idMatch ? idMatch[0] : null;
     }
   }
